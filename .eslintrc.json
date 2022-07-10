@@ -6,7 +6,9 @@
     "extends": [
         "plugin:react/recommended",
         "google",
-        "next/core-web-vitals"
+        "next/core-web-vitals",
+        "plugin:import/warnings",
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
