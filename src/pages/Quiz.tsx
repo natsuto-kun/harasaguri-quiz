@@ -4,7 +4,13 @@ import { QuizTextData } from '../../utils/game-text'
 const QuizPage = () => {
   return (
     <div>
-      <p>{QuizTextData[0].question}</p>
+      {QuizTextData.map(({ question, answers, correct, selectedAnswer }, index) => {
+        return (
+          <div key={question}>
+            <h3>{question}</h3>
+          </div>
+        )
+      })}
     </div>
   )
 }
