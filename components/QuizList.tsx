@@ -1,9 +1,11 @@
 import { QuizTextData } from '../utils/game-text';
 import React, { useState, useEffect, useMemo } from 'react';
 import RandomNum from './Random';
+import { useRouter } from 'next/router';
 
 const QuizList = () => {
   const MaxQuizNum: number = 4;
+  const router = useRouter();
 
   // eslint-disable-next-line new-cap
   const QuestionArray = useMemo(() => RandomNum(MaxQuizNum), []);
@@ -12,9 +14,9 @@ const QuizList = () => {
   useEffect(() => {
     console.log(questionNum);
     if (questionNum === MaxQuizNum) {
-      setQuestionNum(0);
+      router.replace('/Result');
     }
-  }, [questionNum]);
+  }, [questionNum, router]);
 
   return (
     <div>
