@@ -1,14 +1,14 @@
-import '../styles/globals.css'
-import type { AppProp } from 'next/app'
-import Head from 'next/head'
+import '../styles/globals.css';
+import '../styles/color.css';
+import type { AppProps } from 'next/app';
+import { Layout } from '../layouts/Layout';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
-    <Head>
-      <meta name='viewport' />
-    </Head>
-    <Component {...pageProps} />
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   </>
-)
+);
 
-export default MyApp
+export default MyApp;

@@ -1,11 +1,11 @@
 type QuizData = {
-  id: number
-  question: string
-  image: string
-  answers: string[]
-  correct: string
-  selectedAnswer: string
-}
+  id: number;
+  question: string;
+  image: string;
+  answers: string[];
+  correct: string;
+  selectedAnswer: string;
+};
 
 export const QuizTextData: QuizData[] = [
   {
@@ -24,4 +24,28 @@ export const QuizTextData: QuizData[] = [
     correct: 'はよ帰ってや',
     selectedAnswer: '',
   },
-]
+  {
+    id: 3,
+    question: '「いい腕時計してはりますなぁ」',
+    image: '腕時計画像',
+    answers: ['金持ちやね', '話長すぎんで', '奢ってくれ', '思いつかね〜'],
+    correct: 'はよ帰ってや',
+    selectedAnswer: '',
+  },
+  {
+    id: 4,
+    question: 'fuga',
+    image: 'fuga',
+    answers: ['fuga', 'fuga', 'fuga', 'fuga'],
+    correct: 'fuga',
+    selectedAnswer: '',
+  },
+  {
+    id: 5,
+    question: 'hoge',
+    image: 'hoge',
+    answers: ['hoge', 'hoge', 'hoge', 'hoge'],
+    correct: 'hoge',
+    selectedAnswer: '',
+  },
+];
