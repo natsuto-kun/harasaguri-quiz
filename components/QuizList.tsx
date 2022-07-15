@@ -1,23 +1,36 @@
 import { QuizTextData } from '../utils/game-text';
+import React, { useState, useEffect, useMemo } from 'react';
+import RandomNum from './Random';
 
 const QuizList = () => {
+  const MaxQuizNum: number = 4;
+
+  // eslint-disable-next-line new-cap
+  const QuestionArray = useMemo(() => RandomNum(MaxQuizNum), []);
+  const [questionNum, setQuestionNum] = useState(0);
+
+  useEffect(() => {
+    console.log(questionNum);
+    if (questionNum === MaxQuizNum) {
+      setQuestionNum(0);
+    }
+  }, [questionNum]);
+
   return (
     <div>
-      {QuizTextData.map(({ question, answers, correct, selectedAnswer }, index) => {
-        return (
-          <div key={question}>
-            <h2>Q.{index + 1}</h2>
-            <h3>{question}</h3>
-            {answers.map((answer) => {
-              return (
-                <button key={answer} onClick={() => console.log('test')}>
-                  {answer}
-                </button>
-              );
-            })}
-          </div>
-        );
-      })}
+      <div>
+        <h2>Q.{questionNum + 1}</h2>
+        <h3>{QuizTextData[QuestionArray[questionNum]].question}</h3>
+        <div>
+          {QuizTextData[QuestionArray[questionNum]].answers.map((answer) => {
+            return (
+              <button key={answer} onClick={() => setQuestionNum(questionNum + 1)}>
+                {answer}
+              </button>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };
