@@ -17,12 +17,13 @@ const QuizList = () => {
     console.log(QuizTextData[QuestionArray[selectNum]].correct);
     console.log('正解数:' + countAnswer);
     if (answer === QuizTextData[QuestionArray[selectNum]].correct) {
-      setCountAnswer(countAnswer + 1);
+      setCountAnswer((prev) => prev + 1);
     }
   };
 
   useEffect(() => {
     if (questionNum === MaxQuizNum) {
+      localStorage.setItem('countAnswer', JSON.stringify(countAnswer));
       router.replace('/Result');
     }
   }, [questionNum, router]);
