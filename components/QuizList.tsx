@@ -10,9 +10,18 @@ const QuizList = () => {
   // eslint-disable-next-line new-cap
   const QuestionArray = useMemo(() => RandomNum(MaxQuizNum), []);
   const [questionNum, setQuestionNum] = useState(0);
+  const [countAnswer, setCountAnswer] = useState(0);
+
+  const inputAnswer = (selectNum: number, answer: string) => {
+    console.log(answer);
+    console.log(QuizTextData[QuestionArray[selectNum]].correct);
+    console.log('正解数:' + countAnswer);
+    if (answer === QuizTextData[QuestionArray[selectNum]].correct) {
+      setCountAnswer(countAnswer + 1);
+    }
+  };
 
   useEffect(() => {
-    console.log(questionNum);
     if (questionNum === MaxQuizNum) {
       router.replace('/Result');
     }
@@ -26,7 +35,13 @@ const QuizList = () => {
         <div>
           {QuizTextData[QuestionArray[questionNum]].answers.map((answer) => {
             return (
-              <button key={answer} onClick={() => setQuestionNum(questionNum + 1)}>
+              <button
+                key={answer}
+                onClick={() => {
+                  setQuestionNum(questionNum + 1);
+                  inputAnswer(questionNum, answer);
+                }}
+              >
                 {answer}
               </button>
             );

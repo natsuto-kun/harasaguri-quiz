@@ -17,7 +17,6 @@ const container = css`
 `;
 
 const mainContent = css`
-  max-width: 1000px;
   padding: 40px;
   width: 100%;
   height: 100%;
