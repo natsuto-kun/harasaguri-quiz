@@ -4,7 +4,7 @@ import RandomNum from './Random';
 import { useRouter } from 'next/router';
 
 const QuizList = () => {
-  const MaxQuizNum: number = 4;
+  const MaxQuizNum: number = QuizTextData.length - 1;
   const router = useRouter();
 
   // eslint-disable-next-line new-cap
@@ -13,20 +13,22 @@ const QuizList = () => {
   const [countAnswer, setCountAnswer] = useState(0);
 
   const inputAnswer = (selectNum: number, answer: string) => {
-    console.log(answer);
-    console.log(QuizTextData[QuestionArray[selectNum]].correct);
-    console.log('正解数:' + countAnswer);
+    // console.log('QustionArray' + JSON.stringify(QuestionArray));
+    // console.log(answer);
+    // console.log(QuizTextData[QuestionArray[selectNum]].correct);
+    // console.log('正解数:' + countAnswer);
     if (answer === QuizTextData[QuestionArray[selectNum]].correct) {
       setCountAnswer((prev) => prev + 1);
     }
+    if (questionNum === MaxQuizNum) {
+      router.replace('/Result');
+    } else {
+      setQuestionNum(questionNum + 1);
+    }
   };
 
-  useEffect(() => {
-    if (questionNum === MaxQuizNum) {
-      localStorage.setItem('countAnswer', JSON.stringify(countAnswer));
-      router.replace('/Result');
-    }
-  }, [questionNum, router]);
+  // useEffect(() => {
+  //   if (questionNum
 
   return (
     <div>
@@ -39,7 +41,6 @@ const QuizList = () => {
               <button
                 key={answer}
                 onClick={() => {
-                  setQuestionNum(questionNum + 1);
                   inputAnswer(questionNum, answer);
                 }}
               >
