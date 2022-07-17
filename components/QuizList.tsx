@@ -41,6 +41,8 @@ const QuizList = () => {
   const [currentQuestion, setCurrentQuestion] = useState(QuestionArray[questionNum]);
 
   const inputAnswer = (answer: string, selectAnswer: number) => {
+    
+
     if (answer === QuizTextData[currentQuestion].correct) {
       setCountAnswer((prev) => prev + 1);
     }

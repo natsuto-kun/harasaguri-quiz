@@ -1,7 +1,13 @@
 const RandomNum = (num: number) => {
-  const NumArray = [];
+  const NumArray: number[] = [];
   for (let i = 0; i < num; i++) {
-    NumArray.push(Math.floor(Math.random() * num));
+    while (true) {
+      const random = Math.floor(Math.random() * num);
+      if (!NumArray.includes(random)) {
+        NumArray.push(random);
+        break;
+      }
+    }
   }
   return NumArray;
 };
