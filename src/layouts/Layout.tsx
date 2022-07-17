@@ -16,15 +16,6 @@ const container = css`
   min-width: 100vw;
   width: 100vw;
   height: 100vh;
-<<<<<<< HEAD
-`;
-
-const mainContent = css`
-  padding: 40px;
-  width: 100%;
-  height: 100%;
-=======
->>>>>>> refs/remotes/origin/feature/#2_startpage
   background: var(--ui-background-color);
 `;
 
