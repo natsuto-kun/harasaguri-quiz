@@ -5,31 +5,30 @@ import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
 const question = css`
-  text-align : center ;
-  padding : 20px ;
-  background-color : #FFF ;
-  font-size : 25px ;
-  font-family : "Helvetica" ;
-  border : 3px solid #000 ;
-  border-radius : 6px ;
-  box-shadow : 0px 8px 10px -7px;
-`
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  font-size: 25px;
+  font-family: 'Helvetica';
+  border: 3px solid #000;
+  border-radius: 6px;
+  box-shadow: 0px 8px 10px -7px;
+`;
 
 const selection = css`
-  border : 3px solid #000;
-  width:250px;
-  height:50px;
-  font-size : 20px ;
-  font-family : "Comic Sans MS" ;
-  color:black;
-  background-color: white ;
-  text-align:center;
-  line-height:50px;
+  border: 3px solid #000;
+  width: 250px;
+  height: 50px;
+  font-size: 20px;
+  font-family: 'Comic Sans MS';
+  color: black;
+  background-color: white;
+  text-align: center;
+  line-height: 50px;
   border-radius: 6px;
-  margin :10px;
-  box-shadow : 0px 8px 10px -7px;
-`
-
+  margin: 10px;
+  box-shadow: 0px 8px 10px -7px;
+`;
 
 const QuizList = () => {
   const MaxQuizNum: number = 5;
@@ -64,8 +63,9 @@ const QuizList = () => {
                   if (questionNum === MaxQuizNum - 1) {
                     localStorage.setItem('countAnswer', JSON.stringify(countAnswer));
                     router.replace('/Result');
+                  } else {
+                    setQuestionNum((prev) => prev + 1);
                   }
-                  setQuestionNum((prev) => prev + 1);
                 }}
               >
                 {answer}
