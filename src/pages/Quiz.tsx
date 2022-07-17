@@ -1,18 +1,11 @@
-import { css } from '@emotion/react'
-import { QuizTextData } from '../../utils/game-text'
+import QuizList from '../../components/QuizList';
 
 const QuizPage = () => {
   return (
     <div>
-      {QuizTextData.map(({ question, answers, correct, selectedAnswer }, index) => {
-        return (
-          <div key={question}>
-            <h3>{question}</h3>
-          </div>
-        )
-      })}
+      <QuizList></QuizList>
     </div>
-  )
-}
+  );
+};
 
-export default QuizPage
+export default QuizPage;

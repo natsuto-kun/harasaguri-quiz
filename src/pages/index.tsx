@@ -1,14 +1,24 @@
+<<<<<<< HEAD
 import type { NextPage } from 'next'
 import { css } from '@emotion/react'
 import Link from 'next/link'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+=======
+import type { NextPage } from 'next';
+import { css } from '@emotion/react';
+import Link from 'next/link';
+>>>>>>> origin/develop
 
 const SampleText = css`
   font-weight: bold;
   font-size: 28px;
-`
+`;
+
+const DeleteLink = css`
+  display: none;
+`;
 
 const Home: NextPage = () => {
   const settings = {
@@ -49,8 +59,11 @@ const Home: NextPage = () => {
       <Link href='/Quiz' passHref>
         <a>Quiz Page</a>
       </Link>
+      <Link href='/Result' passHref>
+        <a css={DeleteLink}>Result Page</a>
+      </Link>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
