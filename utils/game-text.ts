@@ -29,7 +29,7 @@ export const QuizTextData: QuizData[] = [
     question: '「いい腕時計してはりますなぁ」',
     image: '腕時計画像',
     answers: ['金持ちやね', '話長すぎんで', '奢ってくれ', '思いつかね〜'],
-    correct: 'はよ帰ってや',
+    correct: '話長すぎんで',
     selectedAnswer: '',
   },
   {

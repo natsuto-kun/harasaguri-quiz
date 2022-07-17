@@ -1,6 +1,6 @@
 import { QuizTextData } from '../utils/game-text';
-import React, { useState, useEffect, useMemo } from 'react';
-import RandomNum from './Random';
+import React, { useState, useMemo } from 'react';
+import NumArray from './Random';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
@@ -32,44 +32,40 @@ const selection = css`
 
 
 const QuizList = () => {
-  const MaxQuizNum: number = 4;
+  const MaxQuizNum: number = 5;
   const router = useRouter();
 
   // eslint-disable-next-line new-cap
-  const QuestionArray = useMemo(() => RandomNum(MaxQuizNum), []);
+  const QuestionArray = useMemo(() => NumArray(MaxQuizNum), []);
   const [questionNum, setQuestionNum] = useState(0);
   const [countAnswer, setCountAnswer] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(QuestionArray[questionNum]);
 
-  const inputAnswer = (selectNum: number, answer: string) => {
-    console.log(answer);
-    console.log(QuizTextData[QuestionArray[selectNum]].correct);
-    console.log('正解数:' + countAnswer);
-    if (answer === QuizTextData[QuestionArray[selectNum]].correct) {
+  const inputAnswer = (answer: string) => {
+    if (answer === QuizTextData[currentQuestion].correct) {
       setCountAnswer((prev) => prev + 1);
     }
   };
-
-  useEffect(() => {
-    if (questionNum === MaxQuizNum) {
-      localStorage.setItem('countAnswer', JSON.stringify(countAnswer));
-      router.replace('/Result');
-    }
-  }, [questionNum, router]);
 
   return (
     <div>
       <div>
         <h2>Q.{questionNum + 1}</h2>
-        <h3 css={question}>{QuizTextData[QuestionArray[questionNum]].question}</h3>
+        <h3 css={question}>{QuizTextData[currentQuestion].question}</h3>
         <div>
-          {QuizTextData[QuestionArray[questionNum]].answers.map((answer) => {
+          {QuizTextData[currentQuestion].answers.map((answer) => {
             return (
               <button
                 css={selection}
                 key={answer}
                 onClick={() => {
-                  setQuestionNum(questionNum + 1);
-                  inputAnswer(questionNum, answer);
+                  setCurrentQuestion(QuestionArray[questionNum]);
+                  inputAnswer(answer);
+                  if (questionNum === MaxQuizNum - 1) {
+                    localStorage.setItem('countAnswer', JSON.stringify(countAnswer));
+                    router.replace('/Result');
+                  }
+                  setQuestionNum((prev) => prev + 1);
                 }}
               >
                 {answer}
