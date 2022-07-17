@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 import React, { useState, useEffect } from 'react';
 
 const ResultPage = () => {
@@ -10,6 +11,7 @@ const ResultPage = () => {
       return '';
     }
   };
+
   useEffect(() => {
     const getLocalStorageData = async () => {
       const getCountAnswer = await getLocalStorage('countAnswer');
@@ -17,10 +19,10 @@ const ResultPage = () => {
     };
     getLocalStorageData();
   }, []);
+
   return (
     <div>
-      {countAnswer}
-      <h2>リザルトになる予定</h2>
+      <h2>正解数: {countAnswer}</h2>
     </div>
   );
 };
