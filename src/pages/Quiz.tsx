@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import QuizList from '../../components/QuizList';
 
 const QuizPage = () => {

@@ -1,4 +1,6 @@
 Welcome to this project!
+## 現在の進捗
+https://gleeful-brioche-19e49b.netlify.app/
 
 ### githubからプロジェクトをクローンする
 ```
