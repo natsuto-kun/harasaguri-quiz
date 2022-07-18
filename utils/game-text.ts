@@ -45,7 +45,7 @@ export const QuizTextData: QuizData[] = [
   {
     id: 6,
     question: 'きれいな柄ですね',
-    answers: ['派手過ぎませんか', 'うらやましい', '似合ってるね', '見たことない'],
+    answers: ['派手すぎませんか', 'うらやましい', '似合ってるね', '見たことない'],
     correct: '派手すぎませんか',
     selectedAnswer: '',
   },
@@ -53,7 +53,7 @@ export const QuizTextData: QuizData[] = [
     id: 7,
     question: 'よう勉強してはりますな',
     answers: ['頭いいね', '余計な事言わないで', '意見が欲しいです', '頭固いな'],
-    correct: '余計な事いわないで',
+    correct: '余計な事言わないで',
     selectedAnswer: '',
   },
   {
@@ -80,7 +80,7 @@ export const QuizTextData: QuizData[] = [
   {
     id: 11,
     question: '基本に忠実だね',
-    answers: ['', 'answer2', 'answer3', '応用がきかないね'],
+    answers: ['ミスが少ない', '記憶力がいい', '真面目だね', '応用がきかないね'],
     correct: '応用がきかないね',
     selectedAnswer: '',
   },
@@ -101,14 +101,14 @@ export const QuizTextData: QuizData[] = [
   {
     id: 14,
     question: '優しくていい人だと思う',
-    answers: ['頼りやすい', '', '', '私にはどうでもいい人'],
+    answers: ['頼りやすい', '好きです', '気が弱そう', '私にはどうでもいい人'],
     correct: '私にはどうでもいい人',
     selectedAnswer: '',
   },
   {
     id: 15,
     question: '（大勢の集まりで）しっかりしてるね！',
-    answers: ['頼りがいがある', 'めんどくさい', '幹事よろしく', ''],
+    answers: ['頼りがいがある', 'めんどくさい', '幹事よろしく', 'まとめてほしい'],
     correct: '幹事よろしく',
     selectedAnswer: '',
   },
