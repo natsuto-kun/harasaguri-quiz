@@ -3,13 +3,20 @@ import React, { useState, useMemo } from 'react';
 import RandomNum from './Random';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
+import Image from 'next/image';
 
-const question = css`
+const questionText = css`
+  padding-left: 20px;
+  margin: auto;
   text-align: center;
-  padding: 20px;
-  background-color: #fff;
   font-size: 25px;
   font-family: 'Helvetica';
+`;
+const questionBox = css`
+  padding: 20px;
+  width: 0px
+  height: 80px;
+  background-color: #fff;
   border: 3px solid #000;
   border-radius: 6px;
   box-shadow: 0px 8px 10px -7px;
@@ -29,15 +36,25 @@ const selection = css`
   margin: 10px;
   box-shadow: 0px 8px 10px -7px;
 `;
-
+const image = css`
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+`;
+const flexCenter = css`
+  display: flex;
+  justify-content: center;
+`;
 const QuizList = () => {
   const MaxQuizNum: number = 4;
   const router = useRouter();
+  const DefaultImage: number = 3;
 
   // eslint-disable-next-line new-cap
   const QuestionArray = useMemo(() => RandomNum(MaxQuizNum), []);
   const [questionNum, setQuestionNum] = useState(0);
   const [countAnswer, setCountAnswer] = useState(0);
+  const [changeImage, setChangeImage] = useState(DefaultImage);
   const [currentQuestion, setCurrentQuestion] = useState(QuestionArray[questionNum]);
   console.log(QuizTextData);
 
@@ -48,7 +65,12 @@ const QuizList = () => {
 
     if (answer === QuizTextData[currentQuestion].correct) {
       setCountAnswer((prev) => prev + 1);
-      console.log(questionNum);
+      setChangeImage((prev) => prev + 1);
+    } else {
+      setChangeImage((prev) => prev - 1);
+      if (changeImage == 0) {
+        router.replace('/GameOver');
+      }
     }
     if (questionNum === MaxQuizNum) {
       localStorage.setItem('countAnswer', JSON.stringify(countAnswer));
@@ -64,9 +86,26 @@ const QuizList = () => {
   return (
     <div>
       <div>
-        <h2>Q.{questionNum + 1}</h2>
-        <h3 css={question}>{QuizTextData[currentQuestion].question}</h3>
-        <div>
+        <div css={questionBox}>
+          <h2 css={questionText}>
+            Q.{questionNum + 1}
+            {QuizTextData[currentQuestion].question}
+          </h2>
+        </div>
+        <div css={image}>
+          {changeImage <= 1 ? (
+            <Image width={400} height={400} src='/images/bad_3.png' />
+          ) : changeImage == 2 ? (
+            <Image width={400} height={400} src='/images/bad_2.png' />
+          ) : changeImage == 4 ? (
+            <Image width={400} height={400} src='/images/good_2.png' />
+          ) : changeImage >= 5 ? (
+            <Image width={400} height={400} src='/images/good_3.png' />
+          ) : (
+            <Image width={400} height={400} src='/images/default.png' />
+          )}
+        </div>
+        <div css={flexCenter}>
           {QuizTextData[currentQuestion].answers.map((answer) => {
             return (
               <button
