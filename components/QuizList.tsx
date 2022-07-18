@@ -38,13 +38,17 @@ const QuizList = () => {
   const QuestionArray = useMemo(() => RandomNum(MaxQuizNum), []);
   const [questionNum, setQuestionNum] = useState(0);
   const [countAnswer, setCountAnswer] = useState(0);
+  const [countWrong, setCountWrong] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(QuestionArray[questionNum]);
 
   const inputAnswer = (answer: string, selectAnswer: number) => {
-    
-
     if (answer === QuizTextData[currentQuestion].correct) {
       setCountAnswer((prev) => prev + 1);
+    } else {
+      setCountWrong((prev) => prev + 1);
+      if (countWrong === 2) {
+        router.replace('/GameOver');
+      }
     }
     if (selectAnswer === MaxQuizNum) {
       if (answer === QuizTextData[currentQuestion].correct) {
