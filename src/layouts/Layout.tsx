@@ -17,6 +17,7 @@ const container = css`
   width: 100vw;
   height: 100vh;
   background: var(--ui-background-color);
+  padding: 60px;
 `;
 
 export const Layout: React.FC<LayoutProps> = ({ children, title }: Props) => {
