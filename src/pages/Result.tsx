@@ -22,7 +22,7 @@ const ResultPage = () => {
     getLocalStorageData();
   }, []);
 
-  const twitterText = countAnswer + 'やっはろー';
+  const twitterText = countAnswer + '問正解しました!あなたもはらさぐりんで遊びましょう!';
 
   return (
     <div>
