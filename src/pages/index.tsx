@@ -136,6 +136,9 @@ const Home: NextPage = () => {
         <Link href='/Result' passHref>
           <a css={DeleteLink}>Result Page</a>
         </Link>
+        <Link href='/GameOver' passHref>
+          <a css={DeleteLink}>Game Over Page</a>
+        </Link>
       </div>
     </div>
   );
