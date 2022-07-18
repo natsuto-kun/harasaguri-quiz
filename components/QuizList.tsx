@@ -39,19 +39,24 @@ const QuizList = () => {
   const [questionNum, setQuestionNum] = useState(0);
   const [countAnswer, setCountAnswer] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(QuestionArray[questionNum]);
+  console.log(QuizTextData);
 
-  const inputAnswer = (answer: string, selectAnswer: number) => {
+  const inputAnswer = (answer: string) => {
+    console.log(answer);
+    console.log(QuizTextData[currentQuestion].correct);
+    console.log(QuizTextData[currentQuestion].correct === answer);
+
     if (answer === QuizTextData[currentQuestion].correct) {
       setCountAnswer((prev) => prev + 1);
+      console.log(questionNum);
     }
-    if (selectAnswer === MaxQuizNum) {
-      if (answer === QuizTextData[currentQuestion].correct) {
-        setCountAnswer((prev) => prev + 1);
-      }
+    if (questionNum === MaxQuizNum) {
       localStorage.setItem('countAnswer', JSON.stringify(countAnswer));
       router.replace('/Result');
     } else {
       setQuestionNum((prev) => prev + 1);
+      console.log(questionNum);
+
       setCurrentQuestion(QuestionArray[questionNum]);
     }
   };
@@ -68,7 +73,7 @@ const QuizList = () => {
                 css={selection}
                 key={answer}
                 onClick={() => {
-                  inputAnswer(answer, questionNum);
+                  inputAnswer(answer);
                 }}
               >
                 {answer}
