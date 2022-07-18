@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react';
 import RandomNum from './Random';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
+import Image from 'next/image';
 
 const question = css`
   text-align: center;
@@ -33,20 +34,22 @@ const selection = css`
 const QuizList = () => {
   const MaxQuizNum: number = 4;
   const router = useRouter();
+  const DefaultImage: number = 3;
 
   // eslint-disable-next-line new-cap
   const QuestionArray = useMemo(() => RandomNum(MaxQuizNum), []);
   const [questionNum, setQuestionNum] = useState(0);
   const [countAnswer, setCountAnswer] = useState(0);
-  const [countWrong, setCountWrong] = useState(0);
+  const [changeImage, setChangeImage] = useState(DefaultImage);
   const [currentQuestion, setCurrentQuestion] = useState(QuestionArray[questionNum]);
 
   const inputAnswer = (answer: string, selectAnswer: number) => {
     if (answer === QuizTextData[currentQuestion].correct) {
       setCountAnswer((prev) => prev + 1);
+      setChangeImage((prev) => prev + 1);
     } else {
-      setCountWrong((prev) => prev + 1);
-      if (countWrong === 2) {
+      setChangeImage((prev) => prev - 1);
+      if (changeImage == 0) {
         router.replace('/GameOver');
       }
     }
@@ -67,6 +70,17 @@ const QuizList = () => {
       <div>
         <h2>Q.{questionNum + 1}</h2>
         <h3 css={question}>{QuizTextData[currentQuestion].question}</h3>
+        {changeImage <= 1 ? (
+          <Image width={400} height={400} src='/images/bad_3.png' />
+        ) : changeImage == 2 ? (
+          <Image width={400} height={400} src='/images/bad_2.png' />
+        ) : changeImage == 4 ? (
+          <Image width={400} height={400} src='/images/good_2.png' />
+        ) : changeImage >= 5 ? (
+          <Image width={400} height={400} src='/images/good_3.png' />
+        ) : (
+          <Image width={400} height={400} src='/images/default.png' />
+        )}
         <div>
           {QuizTextData[currentQuestion].answers.map((answer) => {
             return (
