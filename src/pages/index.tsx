@@ -109,7 +109,7 @@ const Home: NextPage = () => {
     autoplay: true,
   };
   const items = [
-    { id: 1, title: 'はらさぐりくいずへようこそ', img: '/images/welcome.png' },
+    { id: 1, title: 'はらさぐりんへようこそ', img: '/images/welcome.png' },
     { id: 2, title: '相手は回りくどい言葉を使ってくるよ', img: '/images/welcome2.png' },
     { id: 3, title: '相手の本心を当てよう！', img: '/images/welcome3.png' },
     { id: 4, title: '相手を怒らせないように気をつけよう', img: '/images/welcome4.png' },
